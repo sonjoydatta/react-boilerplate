@@ -1,0 +1,11 @@
+.husky
+.vscode
+dist
+node_modules
+public
+package.json
+package-lock.json
+yarn.lock
+tsconfig.json
+tsconfig.*.json
+vite.config.ts
