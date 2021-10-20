@@ -4,9 +4,12 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AnyAction, Dispatch } from 'redux';
 import reducer from './rootReducers';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const middlewares: any[] = [];
 if (config.dev) {
-  middlewares.push(await import('redux-logger').then(({ logger }) => logger));
+  await import('redux-logger').then(({ logger }) => {
+    middlewares.push(logger);
+  });
 }
 
 const store = configureStore({
