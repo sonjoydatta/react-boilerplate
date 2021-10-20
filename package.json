@@ -11,6 +11,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
+    "lint": "eslint . --max-warnings=0",
     "prepare": "husky install"
   },
   "dependencies": {
