@@ -7,7 +7,7 @@ export class HttpService {
   }
 
   private headers = () => {
-    const token = ''; // Collect token from the global store
+    const token = ''; // get token from localStorage/cookie
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -16,7 +16,11 @@ export class HttpService {
     return headers;
   };
 
-  private response = async (method: Methods, url: string, payload = {} as unknown) => {
+  private response = async (
+    method: Methods,
+    url: string,
+    payload = {} as unknown,
+  ) => {
     store.dispatch(updateRoute('start'));
     const options: RequestInit = {
       method,
@@ -25,17 +29,21 @@ export class HttpService {
     if (method !== 'GET') options.body = JSON.stringify(payload);
 
     const res = await fetch(`${this.baseURL + '/' + url}`, options);
+    const data = await res.json();
     store.dispatch(updateRoute('complete'));
-    return await res.json();
+    return data;
   };
 
   get = async <T>(url: string): Promise<T> => this.response('GET', url);
 
-  post = async <T>(url: string, payload: unknown): Promise<T> => this.response('POST', url, payload);
+  post = async <T>(url: string, payload: unknown): Promise<T> =>
+    this.response('POST', url, payload);
 
-  put = async <T>(url: string, payload: unknown): Promise<T> => this.response('PUT', url, payload);
+  put = async <T>(url: string, payload: unknown): Promise<T> =>
+    this.response('PUT', url, payload);
 
-  delete = async <T>(url: string, payload: unknown): Promise<T> => this.response('DELETE', url, payload);
+  delete = async <T>(url: string, payload: unknown): Promise<T> =>
+    this.response('DELETE', url, payload);
 }
 
 type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE';

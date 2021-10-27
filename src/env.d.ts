@@ -1,5 +1,7 @@
-interface ImportMetaEnv extends Readonly<Record<string, string | boolean | undefined>> {
-  readonly VITE_BACKEND_URL: string;
+type MetaEnv = Record<string, string | boolean | undefined>;
+
+interface ImportMetaEnv extends Readonly<MetaEnv> {
+  readonly VITE_BACKEND_API_URL: string;
 }
 
 interface ImportMeta {

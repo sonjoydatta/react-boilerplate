@@ -1,9 +1,7 @@
+import { Containers } from 'containers';
+
 const SignIn = () => {
-  return (
-    <div>
-      <p>Sign in</p>
-    </div>
-  );
+  return <Containers.SignIn />;
 };
 
 export default SignIn;
