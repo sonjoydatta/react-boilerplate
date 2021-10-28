@@ -1,5 +1,5 @@
-import app from './app/appSlice';
+import appSlice from './app/appSlice';
 
 export default {
-  app,
+  app: appSlice.reducer,
 };

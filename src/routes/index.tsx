@@ -3,11 +3,10 @@ import nProgress from 'nprogress';
 import { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useStoreSelector } from 'store';
-import { getAppSate } from 'store/actions';
 import { publicRoutes, PUBLIC_ROUTE } from './constants';
 
 export const Routes = () => {
-  const { routeChange } = useStoreSelector(getAppSate);
+  const { routeChange } = useStoreSelector((state) => state.app);
 
   useEffect(() => {
     nProgress.configure({ showSpinner: true });

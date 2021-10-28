@@ -1,5 +1,5 @@
 import { store } from 'store';
-import { updateRoute } from 'store/actions';
+import { app } from 'store/actions';
 
 export class HttpService {
   constructor(protected baseURL: string) {
@@ -21,7 +21,7 @@ export class HttpService {
     url: string,
     payload = {} as unknown,
   ) => {
-    store.dispatch(updateRoute('start'));
+    store.dispatch(app.updateRoute('start'));
     const options: RequestInit = {
       method,
       headers: this.headers(),
@@ -30,7 +30,7 @@ export class HttpService {
 
     const res = await fetch(`${this.baseURL + '/' + url}`, options);
     const data = await res.json();
-    store.dispatch(updateRoute('complete'));
+    store.dispatch(app.updateRoute('complete'));
     return data;
   };
 

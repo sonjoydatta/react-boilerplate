@@ -1,1 +1,3 @@
-export * from './app/appSlice';
+import appSlice from './app/appSlice';
+
+export const app = appSlice.actions;

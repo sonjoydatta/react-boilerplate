@@ -6,14 +6,19 @@ import styled from 'styled-components';
 const { Title } = Typography;
 
 export const SignIn = () => {
-  const { t } = useTranslation('signin');
+  const { t } = useTranslation();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSubmit = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <Wrapper>
       <Form
         name="signIn"
         layout="vertical"
-        // onFinish={onFinish}
+        onFinish={handleSubmit}
         // onFinishFailed={onFinishFailed}
         autoComplete="off"
       >

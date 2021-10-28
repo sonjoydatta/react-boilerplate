@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from 'store';
 
 const initialState: AppState = {
   isLoaded: false,
   routeChange: 'complete',
+  language: 'en',
 };
 
 const appSlice = createSlice({
@@ -16,16 +16,16 @@ const appSlice = createSlice({
     updateRoute: (state, action: PayloadAction<AppState['routeChange']>) => {
       state.routeChange = action.payload;
     },
+    updateLanguage: (state, action: PayloadAction<AppState['language']>) => {
+      state.language = action.payload;
+    },
   },
 });
 
-export default appSlice.reducer;
-
-export const { completeLoader, updateRoute } = appSlice.actions;
-
-export const getAppSate = (state: RootState): AppState => state.app;
+export default appSlice;
 
 type AppState = {
   isLoaded: boolean;
   routeChange: 'start' | 'complete' | 'error';
+  language: 'en' | 'sv';
 };
