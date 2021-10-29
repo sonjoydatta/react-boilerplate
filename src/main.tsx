@@ -1,7 +1,7 @@
 import App from 'App';
-import 'assets/css/app.css';
-import 'assets/less/app.less';
-import 'assets/scss/app.scss';
+import 'assets/styles/css/app.css';
+import 'assets/styles/less/app.less';
+import 'assets/styles/scss/app.scss';
 import 'config/translate';
 import ReactDOM from 'react-dom';
 

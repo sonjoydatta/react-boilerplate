@@ -1,3 +1,4 @@
+import { GlobalStyle } from 'assets/styles/styled';
 import { ErrorFallback } from 'components/ErrorFallback';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
@@ -9,6 +10,7 @@ const App = () => {
     <Provider store={store}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Routes />
+        <GlobalStyle />
       </ErrorBoundary>
     </Provider>
   );

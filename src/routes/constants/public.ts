@@ -1,18 +1,7 @@
 import { lazy } from 'react';
-import { RouteProps } from 'react-router';
+import { IRoute, IRoutePaths, PublicRoute } from './types';
 
-type PathType = 'SIGN_IN' | 'FORGOT_PASSWORD';
-
-type IRouteProps = {
-  id: PathType;
-} & Required<Pick<RouteProps, 'path' | 'component'>> &
-  Omit<RouteProps, 'path' | 'component'>;
-
-type RoutePathProps = {
-  [key in PathType]: RouteProps['path'];
-};
-
-export const publicRoutes: Array<IRouteProps> = [
+export const publicRoutes: Array<IRoute<PublicRoute>> = [
   {
     id: 'SIGN_IN',
     path: '/',
@@ -29,4 +18,4 @@ export const publicRoutes: Array<IRouteProps> = [
 export const PUBLIC_ROUTE = publicRoutes.reduce((acc, cur) => {
   acc[cur.id] = cur.path;
   return acc;
-}, {} as RoutePathProps);
+}, {} as IRoutePaths<PublicRoute>);
