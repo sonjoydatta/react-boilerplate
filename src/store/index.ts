@@ -14,8 +14,7 @@ if (config.dev) {
 
 const store = configureStore({
   reducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middlewares),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
   devTools: config.dev,
 });
 
