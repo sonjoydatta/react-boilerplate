@@ -18,7 +18,7 @@ i18n
     },
     ns: ['signin'],
     backend: {
-      loadPath: 'src/config/translate/locales/{{lng}}/{{ns}}.json',
+      loadPath: 'locales/{{lng}}/{{ns}}.json',
     },
   });
 

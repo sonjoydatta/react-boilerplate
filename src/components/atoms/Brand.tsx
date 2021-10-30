@@ -1,5 +1,5 @@
 import { Image } from 'antd';
-import BrandImage from 'logo.svg';
+import BrandImage from 'assets/images/logo.svg';
 import { FC } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 

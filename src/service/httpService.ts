@@ -16,11 +16,7 @@ export class HttpService {
     return headers;
   };
 
-  private response = async (
-    method: Methods,
-    url: string,
-    payload = {} as unknown,
-  ) => {
+  private response = async (method: Methods, url: string, payload = {} as unknown) => {
     store.dispatch(app.updateRoute('start'));
     const options: RequestInit = {
       method,
@@ -28,22 +24,48 @@ export class HttpService {
     };
     if (method !== 'GET') options.body = JSON.stringify(payload);
 
-    const res = await fetch(`${this.baseURL + '/' + url}`, options);
-    const data = await res.json();
-    store.dispatch(app.updateRoute('complete'));
-    return data;
+    try {
+      const res = await fetch(`${this.baseURL + '/' + url}`, options);
+      const data = await res.json();
+      if (res.ok) {
+        return {
+          success: true,
+          data,
+        };
+      }
+
+      throw new Error(data);
+    } catch (error) {
+      return {
+        success: false,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        data: (error as any).data,
+      };
+    } finally {
+      store.dispatch(app.updateRoute('complete'));
+    }
   };
 
-  get = async <T>(url: string): Promise<T> => this.response('GET', url);
+  get = async <T>(url: string): Promise<IReturnType<T>> => {
+    return this.response('GET', url);
+  };
 
-  post = async <T>(url: string, payload: unknown): Promise<T> =>
-    this.response('POST', url, payload);
+  post = async <T>(url: string, payload: unknown): Promise<IReturnType<T>> => {
+    return this.response('POST', url, payload);
+  };
 
-  put = async <T>(url: string, payload: unknown): Promise<T> =>
-    this.response('PUT', url, payload);
+  put = async <T>(url: string, payload: unknown): Promise<IReturnType<T>> => {
+    return this.response('PUT', url, payload);
+  };
 
-  delete = async <T>(url: string, payload: unknown): Promise<T> =>
-    this.response('DELETE', url, payload);
+  delete = async <T>(url: string, payload: unknown): Promise<IReturnType<T>> => {
+    return this.response('DELETE', url, payload);
+  };
 }
 
 type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+type IReturnType<T> = {
+  success: boolean;
+  data: T;
+};
