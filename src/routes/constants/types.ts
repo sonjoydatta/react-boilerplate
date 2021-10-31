@@ -8,5 +8,5 @@ export type IRoute<T extends string> = {
   Omit<RouteProps, 'path' | 'component'>;
 
 export type IRoutePaths<T extends string> = {
-  [key in T]: RouteProps['path'];
+  [key in T]: string;
 };
