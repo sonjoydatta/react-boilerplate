@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { IRoute, IRoutePaths, PublicRoute } from './types';
 
-export const publicRoutes: Array<IRoute<PublicRoute>> = [
+export const publicRoutes: IRoute<PublicRoute>[] = [
   {
     id: 'SIGN_IN',
     path: '/',
@@ -16,6 +16,6 @@ export const publicRoutes: Array<IRoute<PublicRoute>> = [
 ];
 
 export const PUBLIC_ROUTE = publicRoutes.reduce((acc, cur) => {
-  acc[cur.id] = cur.path;
+  acc[cur.id] = cur.path as string;
   return acc;
 }, {} as IRoutePaths<PublicRoute>);

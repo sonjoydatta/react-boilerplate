@@ -1,71 +1,87 @@
-import { store } from 'store';
-import { app } from 'store/actions';
+import { TokenService } from './tokenService';
 
-export class HttpService {
+type BaseResponse<T> = Promise<{
+  success: boolean;
+  data: T;
+}>;
+
+export class HttpService extends TokenService {
   constructor(protected baseURL: string) {
+    super();
     this.baseURL = baseURL;
   }
 
-  private headers = () => {
-    const token = ''; // get token from localStorage/cookie
-    const headers: HeadersInit = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    };
-    if (token) headers.Authorization = token;
-    return headers;
-  };
-
-  private response = async (method: Methods, url: string, payload = {} as unknown) => {
-    store.dispatch(app.updateRoute('start'));
-    const options: RequestInit = {
-      method,
-      headers: this.headers(),
-    };
-    if (method !== 'GET') options.body = JSON.stringify(payload);
-
-    try {
-      const res = await fetch(`${this.baseURL + '/' + url}`, options);
-      const data = await res.json();
-      if (res.ok) {
-        return {
-          success: true,
-          data,
-        };
-      }
-
-      throw new Error(data);
-    } catch (error) {
-      return {
-        success: false,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        data: (error as any).data,
-      };
-    } finally {
-      store.dispatch(app.updateRoute('complete'));
+  private headersWithAuth(): Headers {
+    const headers = new Headers();
+    const token = this.getToken();
+    if (token) {
+      headers.append('Authorization', `Bearer ${token}`);
     }
-  };
+    return headers;
+  }
 
-  get = async <T>(url: string): Promise<IReturnType<T>> => {
-    return this.response('GET', url);
-  };
+  private headers(): Headers {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
 
-  post = async <T>(url: string, payload: unknown): Promise<IReturnType<T>> => {
-    return this.response('POST', url, payload);
-  };
+    const authHeaders = this.headersWithAuth();
+    for (const [key, value] of authHeaders.entries()) {
+      headers.append(key, value);
+    }
+    return headers;
+  }
 
-  put = async <T>(url: string, payload: unknown): Promise<IReturnType<T>> => {
-    return this.response('PUT', url, payload);
-  };
+  private async response<T>(response: Response): BaseResponse<T> {
+    const data = await response.json();
+    return {
+      success: response.ok,
+      data,
+    };
+  }
 
-  delete = async <T>(url: string, payload: unknown): Promise<IReturnType<T>> => {
-    return this.response('DELETE', url, payload);
-  };
+  protected async get<T>(url: string): BaseResponse<T> {
+    const res = await fetch(`${this.baseURL}${url}`, {
+      headers: this.headers(),
+    });
+    return this.response(res);
+  }
+
+  protected async post<T>(url: string, body: unknown): BaseResponse<T> {
+    const res = await fetch(`${this.baseURL}${url}`, {
+      method: 'POST',
+      headers: this.headers(),
+      body: JSON.stringify(body),
+    });
+    return this.response(res);
+  }
+
+  protected async put<T>(url: string, body: unknown): BaseResponse<T> {
+    const res = await fetch(`${this.baseURL}${url}`, {
+      method: 'PUT',
+      headers: this.headers(),
+      body: JSON.stringify(body),
+    });
+    return this.response(res);
+  }
+
+  protected async delete<T>(url: string): BaseResponse<T> {
+    const res = await fetch(`${this.baseURL}${url}`, {
+      method: 'DELETE',
+      headers: this.headers(),
+    });
+    return this.response(res);
+  }
+
+  protected async image<T>(url: string, body: FormData): BaseResponse<T> {
+    const res = await fetch(`${this.baseURL}${url}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        ...this.headersWithAuth(),
+      },
+      body,
+    });
+    return this.response(res);
+  }
 }
-
-type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE';
-
-type IReturnType<T> = {
-  success: boolean;
-  data: T;
-};
