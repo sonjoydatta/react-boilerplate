@@ -1,38 +1,35 @@
-import { TokenService } from './tokenService';
+import { AuthService } from './authService';
 
 type BaseResponse<T> = Promise<{
   success: boolean;
   data: T;
 }>;
 
-export class HttpService extends TokenService {
-  constructor(protected baseURL: string) {
-    super();
+class HttpServiceWithAuth {
+  constructor(protected baseURL: string, private authService: AuthService) {
     this.baseURL = baseURL;
+    this.authService = authService;
   }
 
   private headersWithAuth(): Headers {
     const headers = new Headers();
-    const token = this.getToken();
+    const token = this.authService.getAuth();
     if (token) {
       headers.append('Authorization', `Bearer ${token}`);
     }
     return headers;
   }
 
-  private headers(): Headers {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json');
-
-    const authHeaders = this.headersWithAuth();
-    for (const [key, value] of authHeaders.entries()) {
-      headers.append(key, value);
-    }
-    return headers;
-  }
-
-  private async response<T>(response: Response): BaseResponse<T> {
+  private async request<T>(method: string, url: string, body?: unknown): BaseResponse<T> {
+    const response = await fetch(`${this.baseURL}${url}`, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        ...this.headersWithAuth(),
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    });
     const data = await response.json();
     return {
       success: response.ok,
@@ -40,41 +37,24 @@ export class HttpService extends TokenService {
     };
   }
 
-  protected async get<T>(url: string): BaseResponse<T> {
-    const res = await fetch(`${this.baseURL}${url}`, {
-      headers: this.headers(),
-    });
-    return this.response(res);
+  protected get<T>(url: string): BaseResponse<T> {
+    return this.request<T>('GET', url);
   }
 
-  protected async post<T>(url: string, body: unknown): BaseResponse<T> {
-    const res = await fetch(`${this.baseURL}${url}`, {
-      method: 'POST',
-      headers: this.headers(),
-      body: JSON.stringify(body),
-    });
-    return this.response(res);
+  protected post<T>(url: string, body: unknown): BaseResponse<T> {
+    return this.request<T>('POST', url, body);
   }
 
-  protected async put<T>(url: string, body: unknown): BaseResponse<T> {
-    const res = await fetch(`${this.baseURL}${url}`, {
-      method: 'PUT',
-      headers: this.headers(),
-      body: JSON.stringify(body),
-    });
-    return this.response(res);
+  protected put<T>(url: string, body: unknown): BaseResponse<T> {
+    return this.request<T>('PUT', url, body);
   }
 
-  protected async delete<T>(url: string): BaseResponse<T> {
-    const res = await fetch(`${this.baseURL}${url}`, {
-      method: 'DELETE',
-      headers: this.headers(),
-    });
-    return this.response(res);
+  protected delete<T>(url: string): BaseResponse<T> {
+    return this.request<T>('DELETE', url);
   }
 
-  protected async image<T>(url: string, body: FormData): BaseResponse<T> {
-    const res = await fetch(`${this.baseURL}${url}`, {
+  protected async uploadFile<T>(url: string, body: FormData): BaseResponse<T> {
+    const response = await fetch(`${this.baseURL}${url}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -82,6 +62,16 @@ export class HttpService extends TokenService {
       },
       body,
     });
-    return this.response(res);
+    const data = await response.json();
+    return {
+      success: response.ok,
+      data,
+    };
+  }
+}
+
+export class HttpService extends HttpServiceWithAuth {
+  constructor(baseURL: string) {
+    super(baseURL, new AuthService());
   }
 }

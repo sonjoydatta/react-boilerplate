@@ -9,7 +9,7 @@ export const Routes = () => {
   const { routeChange } = useStoreSelector((state) => state.app);
 
   useEffect(() => {
-    nProgress.configure({ showSpinner: true });
+    nProgress.configure({ showSpinner: false });
     if (routeChange === 'start') {
       nProgress.start();
     } else {

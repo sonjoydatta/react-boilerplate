@@ -1,5 +1,5 @@
 export class LocalStorageService {
-  protected get(key: string): unknown {
+  protected get(key: string) {
     const value = localStorage.getItem(key);
     if (value === null) {
       return null;
@@ -7,7 +7,7 @@ export class LocalStorageService {
     return JSON.parse(value);
   }
 
-  protected getAll(): Record<string, unknown> {
+  protected getAll() {
     const result: Record<string, unknown> = {};
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -18,15 +18,15 @@ export class LocalStorageService {
     return result;
   }
 
-  protected set(key: string, value: unknown): void {
+  protected set(key: string, value: unknown) {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  protected remove(key: string): void {
+  protected remove(key: string) {
     localStorage.removeItem(key);
   }
 
-  protected clear(): void {
+  protected clear() {
     localStorage.clear();
   }
 }

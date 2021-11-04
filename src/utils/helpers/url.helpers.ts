@@ -1,25 +1,12 @@
-import { useHistory } from 'react-router';
 import { ParsedUrlQuery } from './types';
 
 /**
- * React history push any URL
- * @param url
+ * Add new query params to the existing ones
+ * @param {ParsedUrlQuery} query
+ * @param {ParsedUrlQuery} newQuery
+ * @returns {URLSearchParams}
  */
-export const RouterPush = (url: string) => {
-  const history = useHistory();
-
-  if (typeof window !== undefined) {
-    history.push(url);
-  }
-};
-
-/**
- * Update URL search params with existing params
- * @param query
- * @param newQuery
- * @returns
- */
-export const updateURLSearchParams = (query: ParsedUrlQuery, newQuery = {} as ParsedUrlQuery): URLSearchParams => {
+export const updateURLSearchParams = (query: ParsedUrlQuery, newQuery: ParsedUrlQuery = {}): URLSearchParams => {
   const params = new URLSearchParams();
 
   const updateParams = (key: string, value: ParsedUrlQuery['key']) => {

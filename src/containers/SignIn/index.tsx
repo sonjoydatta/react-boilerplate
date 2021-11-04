@@ -1,5 +1,7 @@
 import { Button, Form, Input, Typography } from 'antd';
 import { Brand } from 'components/atoms';
+import { authAPI } from 'libs/api';
+import { useMessage } from 'libs/hooks';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
@@ -7,21 +9,23 @@ const { Title } = Typography;
 
 export const SignIn = () => {
   const { t } = useTranslation();
+  const { loaderStart, loaderSuccess, errorMessage } = useMessage('signIn');
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleSubmit = (data: any) => {
-    console.log(data);
+  const handleSubmit = async (values: API.Auth.SignInBody) => {
+    loaderStart();
+    try {
+      const { success, data } = await authAPI.signIn(values);
+      loaderSuccess();
+      if (!success) throw new Error('Email or password is invalid');
+      console.log(data);
+    } catch (err) {
+      errorMessage(err.message);
+    }
   };
 
   return (
     <Wrapper>
-      <Form
-        name="signIn"
-        layout="vertical"
-        onFinish={handleSubmit}
-        // onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
+      <Form name="signIn" layout="vertical" onFinish={handleSubmit} autoComplete="off">
         <Brand />
         <Title level={3}>{t('Sign in to continue')}</Title>
         <Form.Item
@@ -56,9 +60,13 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.gray[100]};
 
   form {
     min-width: 20rem;
-    padding: 0 0.5rem;
+    padding: 1rem;
+    border-radius: ${({ theme }) => theme.borderRadius};
+    background-color: ${({ theme }) => theme.colors.white};
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.2);
   }
 `;

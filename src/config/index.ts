@@ -1,3 +1,5 @@
+export * from './theme';
+
 export default {
   siteName: 'React Boilerplate',
   dev: import.meta.env.DEV,
