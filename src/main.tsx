@@ -1,8 +1,7 @@
 import App from 'App';
-import 'assets/styles/css/app.css';
 import 'assets/styles/less/app.less';
-import 'assets/styles/scss/app.scss';
 import 'config/translate';
+import 'nprogress/nprogress.css';
 import ReactDOM from 'react-dom';
 
 /**

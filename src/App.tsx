@@ -3,19 +3,22 @@ import { ErrorFallback } from 'components/ErrorFallback';
 import { defaultTheme } from 'config';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Routes } from 'routes';
-import { store } from 'store';
+import { persistor, store } from 'store';
 import { ThemeProvider } from 'styled-components';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ThemeProvider theme={defaultTheme}>
-          <Routes />
-        </ThemeProvider>
-        <GlobalStyle />
-      </ErrorBoundary>
+      <PersistGate loading={null} persistor={persistor}>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ThemeProvider theme={defaultTheme}>
+            <Routes />
+          </ThemeProvider>
+          <GlobalStyle />
+        </ErrorBoundary>
+      </PersistGate>
     </Provider>
   );
 };

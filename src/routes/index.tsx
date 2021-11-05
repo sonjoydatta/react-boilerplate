@@ -1,4 +1,5 @@
 import { Spin } from 'antd';
+import { NonAuthLayout } from 'components/layouts';
 import nProgress from 'nprogress';
 import { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -21,9 +22,11 @@ export const Routes = () => {
     <Router>
       <Suspense fallback={<Spin className="SuspenseLoader" size="large" />}>
         <Switch>
-          {publicRoutes.map(({ id, ...rest }) => (
-            <Route key={id} {...rest} />
-          ))}
+          <NonAuthLayout>
+            {publicRoutes.map(({ id, ...rest }) => (
+              <Route key={id} {...rest} />
+            ))}
+          </NonAuthLayout>
         </Switch>
       </Suspense>
     </Router>

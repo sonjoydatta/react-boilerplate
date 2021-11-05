@@ -11,7 +11,7 @@ export const useMessage = (key: string) => {
   };
 
   const loaderSuccess = () => {
-    message.success({ content: 'Loaded!', key, duration: 1 });
+    message.success({ content: 'Loaded!', key });
     dispatch(app.updateRoute('complete'));
   };
 
@@ -20,9 +20,17 @@ export const useMessage = (key: string) => {
     dispatch(app.updateRoute('error'));
   };
 
+  const APIRequest = (request: () => Promise<void>) => {
+    loaderStart();
+    request()
+      .then(loaderSuccess)
+      .catch((err) => errorMessage(err.message));
+  };
+
   return {
     loaderStart,
     loaderSuccess,
     errorMessage,
+    APIRequest,
   };
 };

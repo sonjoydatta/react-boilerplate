@@ -6,5 +6,6 @@
   "Sign In": "Sign In",
   "Email address": "Email address",
   "Password": "Password",
-  "Password is required!": "Password is required!"
+  "Password is required!": "Password is required!",
+  "Email or password is invalid!": "Email or password is invalid!"
 }
