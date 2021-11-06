@@ -1,17 +1,27 @@
 import { FC } from 'react';
-import { Redirect, Route, RouteProps } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
+import { RouteWithAuth } from './types';
 
-export type PrivateRouteProps = {
-  isAuthenticated: boolean;
-  redirectPath: string;
-} & RouteProps;
+export const PrivateRoute: FC<RouteWithAuth> = (props) => {
+  const { isAuthenticated, redirectURL, component: Component, ...rest } = props;
 
-export const PrivateRoute: FC<PrivateRouteProps> = (props) => {
-  const { isAuthenticated, redirectPath, location, ...routeProps } = props;
+  if (!Component) return null;
 
-  if (isAuthenticated) {
-    return <Route {...routeProps} />;
-  }
-
-  return <Redirect to={{ pathname: redirectPath, state: location }} />;
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: redirectURL,
+              state: { from: props.location },
+            }}
+          />
+        )
+      }
+    />
+  );
 };

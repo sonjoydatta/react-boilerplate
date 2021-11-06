@@ -13,11 +13,10 @@ class HttpServiceWithAuth {
 
   private headersWithAuth() {
     const headers: HeadersInit = {};
-    const authData = this.authService.getAuth();
-    if (authData) {
-      const { token } = authData;
-      if (token) {
-        headers.Authorization = `Bearer ${token}`;
+    const data = this.authService.getAuth();
+    if (data && Object.keys(data).length) {
+      if (data?.token) {
+        headers.Authorization = `Bearer ${data.token}`;
       }
     }
     return headers;

@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { IRoute, IRoutePaths, PublicRoute } from './types';
+import { IRoute, IRoutePaths, PublicRoute } from '../types';
 
 export const publicRoutes: IRoute<PublicRoute>[] = [
   {
@@ -12,6 +12,11 @@ export const publicRoutes: IRoute<PublicRoute>[] = [
     id: 'FORGOT_PASSWORD',
     path: '/forgot-password',
     component: lazy(() => import('pages/ForgotPassword')),
+  },
+  {
+    id: '404',
+    path: '/404',
+    component: lazy(() => import('pages/NotFound')),
   },
 ];
 

@@ -5,32 +5,28 @@ import { app } from 'store/actions';
 export const useMessage = (key: string) => {
   const dispatch = useStoreDispatch();
 
-  const loaderStart = () => {
-    message.loading({ content: 'Loading...', key });
-    dispatch(app.updateRoute('start'));
-  };
-
-  const loaderSuccess = () => {
-    message.success({ content: 'Loaded!', key });
+  const showMessage = (msg?: string) => {
     dispatch(app.updateRoute('complete'));
+    if (msg) {
+      message.success({ content: msg, key });
+    }
   };
 
-  const errorMessage = (error: string) => {
-    message.error({ content: error, key });
+  const showError = (error: string) => {
     dispatch(app.updateRoute('error'));
+    message.error({ content: error, key });
   };
 
-  const APIRequest = (request: () => Promise<void>) => {
-    loaderStart();
+  const APIRequest = (request: () => Promise<string | void>) => {
+    dispatch(app.updateRoute('start'));
     request()
-      .then(loaderSuccess)
-      .catch((err) => errorMessage(err.message));
+      .then((msg) => showMessage(msg as string | undefined))
+      .catch((err) => showError(err.message));
   };
 
   return {
-    loaderStart,
-    loaderSuccess,
-    errorMessage,
+    showMessage,
+    showError,
     APIRequest,
   };
 };

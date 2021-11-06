@@ -1,8 +1,12 @@
+import { NonAuthLayout } from 'components/layouts';
+
 const ForgotPassword = () => {
   return (
-    <div>
-      <p>Forgot password</p>
-    </div>
+    <NonAuthLayout>
+      <div>
+        <p>Forgot password</p>
+      </div>
+    </NonAuthLayout>
   );
 };
 

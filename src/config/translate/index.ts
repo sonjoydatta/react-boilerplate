@@ -15,7 +15,7 @@ i18n
     },
     ns: ['general', 'signin'],
     backend: {
-      loadPath: 'locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 
