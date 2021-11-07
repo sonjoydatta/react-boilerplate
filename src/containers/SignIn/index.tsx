@@ -2,24 +2,23 @@ import { Button, Form, Input, Typography } from 'antd';
 import { authAPI } from 'libs/api';
 import { useMessage } from 'libs/hooks';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useLocation } from 'react-router-dom';
-import { PRIVATE_ROUTE } from 'routes';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ROUTE_PATHS } from 'routes';
 import { auth } from 'store/actions';
 
 export const SignIn = () => {
   const { t } = useTranslation('signin');
   const { APIRequest } = useMessage('signIn');
-  const history = useHistory();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const location = useLocation() as any;
-  const { from } = location.state || { from: { pathname: PRIVATE_ROUTE.DASHBOARD } };
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: ROUTE_PATHS.DASHBOARD } };
 
   const handleSubmit = (values: API.Auth.SignInBody) => {
     APIRequest(async () => {
       const { success, data } = await authAPI.signIn(values);
       if (success) {
         auth.authenticate(data);
-        history.replace(from);
+        navigate(from);
         return t('You have successfully signed in!');
       } else {
         throw new Error(t('Email or password is invalid!'));

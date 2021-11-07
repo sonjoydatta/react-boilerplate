@@ -1,22 +1,21 @@
 import { Brand, LangPicker } from 'components/atoms';
-import { FC } from 'react';
-import { Redirect } from 'react-router-dom';
-import { PRIVATE_ROUTE } from 'routes';
+import { Navigate, Outlet } from 'react-router-dom';
+import { ROUTE_PATHS } from 'routes';
 import { useStoreSelector } from 'store';
 import styled from 'styled-components';
 
-export const NonAuthLayout: FC = ({ children }) => {
+export const NonAuthLayout = () => {
   const { isAuthenticated } = useStoreSelector((state) => state.auth);
 
   if (isAuthenticated) {
-    return <Redirect to={PRIVATE_ROUTE.DASHBOARD} />;
+    return <Navigate to={ROUTE_PATHS.DASHBOARD} />;
   }
 
   return (
     <Wrapper>
       <div className="container">
         <Brand />
-        {children}
+        <Outlet />
       </div>
       <LangPicker />
     </Wrapper>

@@ -33,6 +33,16 @@ module.exports = {
         usePrettierrc: true,
       },
     ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   settings: {
     react: {
