@@ -3,7 +3,7 @@ import nProgress from 'nprogress';
 import { Suspense, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { useStoreSelector } from 'store';
-import { Elements, ROUTE_PATHS } from './Elements';
+import { AppRoutes, routeNavigate } from './AppRoutes';
 
 export const BaseRoutes = () => {
   const { routeChange } = useStoreSelector((state) => state.app);
@@ -19,10 +19,10 @@ export const BaseRoutes = () => {
   return (
     <Suspense fallback={<Spin className="SuspenseLoader" size="large" />}>
       <BrowserRouter>
-        <Elements />
+        <AppRoutes />
       </BrowserRouter>
     </Suspense>
   );
 };
 
-export { ROUTE_PATHS };
+export { routeNavigate };

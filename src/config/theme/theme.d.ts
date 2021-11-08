@@ -8,6 +8,7 @@ type ColorGray = {
 };
 
 type Colors = {
+  primary: string;
   white: string;
   gray: ColorGray;
 };

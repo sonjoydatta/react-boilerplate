@@ -3,6 +3,7 @@ import { DefaultTheme } from 'styled-components';
 export const defaultTheme: DefaultTheme = {
   borderRadius: '0.625rem',
   colors: {
+    primary: '#4599ff',
     white: '#ffffff',
     gray: {
       100: '#f7fafc',

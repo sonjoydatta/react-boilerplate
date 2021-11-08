@@ -1,2 +1,2 @@
-export * from './date.helpers';
-export * from './url.helpers';
+export * from './date.helper';
+export * from './url.helper';

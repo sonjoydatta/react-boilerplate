@@ -1,1 +1,1 @@
-export * from './option.constants';
+export * from './option.constant';

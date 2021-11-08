@@ -1,6 +1,6 @@
 import { Brand, LangPicker } from 'components/atoms';
 import { Navigate, Outlet } from 'react-router-dom';
-import { ROUTE_PATHS } from 'routes';
+import { routeNavigate } from 'routes';
 import { useStoreSelector } from 'store';
 import styled from 'styled-components';
 
@@ -8,7 +8,7 @@ export const NonAuthLayout = () => {
   const { isAuthenticated } = useStoreSelector((state) => state.auth);
 
   if (isAuthenticated) {
-    return <Navigate to={ROUTE_PATHS.DASHBOARD} />;
+    return <Navigate to={routeNavigate('dashboard')} />;
   }
 
   return (

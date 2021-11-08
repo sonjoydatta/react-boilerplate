@@ -1,4 +1,4 @@
-import { authInstance } from 'service';
+import { authInstance } from 'services';
 import { store } from '..';
 import { auth } from '../actions';
 

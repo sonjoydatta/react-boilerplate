@@ -1,4 +1,4 @@
-import { AuthService } from './authService';
+import { AuthService } from './auth.service';
 
 type BaseResponse<T> = Promise<{
   success: boolean;

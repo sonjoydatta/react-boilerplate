@@ -1,4 +1,4 @@
-import { LocalStorageService } from './localStorageService';
+import { LocalStorageService } from './localStorage.service';
 
 type AuthData = {
   token: string;

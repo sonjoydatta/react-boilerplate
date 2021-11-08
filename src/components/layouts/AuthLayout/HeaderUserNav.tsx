@@ -1,0 +1,27 @@
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar, Dropdown, Menu } from 'antd';
+import { Link } from 'react-router-dom';
+import { routeNavigate } from 'routes';
+
+export const HeaderUserNav = () => {
+  return (
+    <Dropdown
+      overlay={
+        <Menu>
+          <Menu.Item key={0}>
+            <Link to={routeNavigate('dashboard/profile')}>Your profile</Link>
+          </Menu.Item>
+          <Menu.Item key={1}>Account settings</Menu.Item>
+          <Menu.Divider />
+          <Menu.Item key={2}>Sign out</Menu.Item>
+        </Menu>
+      }
+      trigger={['click']}
+      placement="bottomRight"
+    >
+      <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+        <Avatar size="large" icon={<UserOutlined />} />
+      </a>
+    </Dropdown>
+  );
+};

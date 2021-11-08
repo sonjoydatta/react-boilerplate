@@ -1,6 +1,6 @@
 import { Button, Result } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { ROUTE_PATHS } from 'routes';
+import { routeNavigate } from 'routes';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const NotFound = () => {
       title="404"
       subTitle="Sorry, the page you visited does not exist."
       extra={
-        <Button type="primary" onClick={() => navigate(ROUTE_PATHS.DASHBOARD)}>
+        <Button type="primary" onClick={() => navigate(routeNavigate('dashboard'))}>
           Back Home
         </Button>
       }

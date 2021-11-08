@@ -1,5 +1,10 @@
 import { ComponentType, lazy } from 'react';
 
+/**
+ * This is an extended version of `React.lazy`. By using this
+ * function you can load multiple components as default export
+ * from a single file.
+ */
 export const lazily = <T extends Record<string, ComponentType<unknown>>>(ctor: (x?: string) => Promise<T>) => {
   const handler: ProxyHandler<T> = {
     get(_target, componentName) {

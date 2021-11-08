@@ -3,7 +3,7 @@ import { authAPI } from 'libs/api';
 import { useMessage } from 'libs/hooks';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ROUTE_PATHS } from 'routes';
+import { routeNavigate } from 'routes';
 import { auth } from 'store/actions';
 
 export const SignIn = () => {
@@ -11,7 +11,7 @@ export const SignIn = () => {
   const { APIRequest } = useMessage('signIn');
   const navigate = useNavigate();
   const location = useLocation();
-  const { from } = location.state || { from: { pathname: ROUTE_PATHS.DASHBOARD } };
+  const { from } = location.state || { from: { pathname: routeNavigate('dashboard') } };
 
   const handleSubmit = (values: API.Auth.SignInBody) => {
     APIRequest(async () => {
@@ -46,7 +46,7 @@ export const SignIn = () => {
           { type: 'email', message: t('Email address is invalid!') },
         ]}
       >
-        <Input placeholder={t('Email address')} />
+        <Input size="large" placeholder={t('Email address')} />
       </Form.Item>
 
       <Form.Item
@@ -54,9 +54,9 @@ export const SignIn = () => {
         name="password"
         rules={[{ required: true, message: t('Password is required!') }]}
       >
-        <Input.Password placeholder={t('Password')} />
+        <Input.Password size="large" placeholder={t('Password')} />
       </Form.Item>
-      <Button block type="primary" htmlType="submit">
+      <Button block size="large" type="primary" htmlType="submit">
         {t('Sign In')}
       </Button>
     </Form>
