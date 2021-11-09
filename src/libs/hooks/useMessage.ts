@@ -17,6 +17,11 @@ export const useMessage = (key: string) => {
     message.error({ content: error, key });
   };
 
+  /**
+   * This function will be used to handle the error message or the
+   * success message to be shown in the UI. It needs to be called
+   * in the component that will be using the `useMessage` hook.
+   */
   const APIRequest = (request: () => Promise<string | void>) => {
     dispatch(app.updateRoute('start'));
     request()

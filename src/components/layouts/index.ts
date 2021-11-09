@@ -1,2 +1,2 @@
-export * from './AuthLayout';
-export * from './NonAuthLayout';
+export * from './DashboardLayout';
+export * from './SignInLayout';

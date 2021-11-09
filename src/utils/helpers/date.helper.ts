@@ -1,10 +1,8 @@
 import { InitMonthType } from './types';
 
 /**
- * Get the month from a date
- * @param value
- * @param type
- * @returns
+ * You can use this function to get the current month
+ * name in the current locale.
  */
 export const getMonthName = (value: Date, type?: InitMonthType) => {
   return value.toLocaleString('default', { month: type || 'long' });

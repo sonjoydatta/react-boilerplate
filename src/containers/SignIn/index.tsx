@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routeNavigate } from 'routes';
 import { auth } from 'store/actions';
+import { ErrorException } from 'utils';
 
 export const SignIn = () => {
   const { t } = useTranslation('signin');
@@ -19,10 +20,9 @@ export const SignIn = () => {
       if (success) {
         auth.authenticate(data);
         navigate(from);
-        return t('You have successfully signed in!');
-      } else {
-        throw new Error(t('Email or password is invalid!'));
+        return 'You have successfully signed in';
       }
+      throw new ErrorException(data);
     });
   };
 
@@ -36,6 +36,7 @@ export const SignIn = () => {
         email: 'eve.holt@reqres.in',
         password: 'cityslicka',
       }}
+      size="large"
     >
       <Typography.Title level={3}>{t('Sign in to continue')}</Typography.Title>
       <Form.Item
@@ -46,7 +47,7 @@ export const SignIn = () => {
           { type: 'email', message: t('Email address is invalid!') },
         ]}
       >
-        <Input size="large" placeholder={t('Email address')} />
+        <Input placeholder={t('Email address')} />
       </Form.Item>
 
       <Form.Item
@@ -54,9 +55,9 @@ export const SignIn = () => {
         name="password"
         rules={[{ required: true, message: t('Password is required!') }]}
       >
-        <Input.Password size="large" placeholder={t('Password')} />
+        <Input.Password placeholder={t('Password')} />
       </Form.Item>
-      <Button block size="large" type="primary" htmlType="submit">
+      <Button block type="primary" htmlType="submit">
         {t('Sign In')}
       </Button>
     </Form>

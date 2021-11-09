@@ -1,10 +1,9 @@
 import { ParsedUrlQuery } from './types';
 
 /**
- * Add new query params to the existing ones
- * @param {ParsedUrlQuery} query
- * @param {ParsedUrlQuery} newQuery
- * @returns {URLSearchParams}
+ * You can use this function to add or update URL
+ * query parameters. It will merge them with existing
+ * parameters and return new `URLSearchParams` object.
  */
 export const updateURLSearchParams = (query: ParsedUrlQuery, newQuery: ParsedUrlQuery = {}): URLSearchParams => {
   const params = new URLSearchParams();

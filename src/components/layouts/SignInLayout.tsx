@@ -1,26 +1,17 @@
 import { Brand, LangPicker } from 'components/atoms';
-import { Navigate, Outlet } from 'react-router-dom';
-import { routeNavigate } from 'routes';
-import { useStoreSelector } from 'store';
+import { withoutAuth } from 'components/hoc';
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const NonAuthLayout = () => {
-  const { isAuthenticated } = useStoreSelector((state) => state.auth);
-
-  if (isAuthenticated) {
-    return <Navigate to={routeNavigate('dashboard')} />;
-  }
-
-  return (
-    <Wrapper>
-      <div className="container">
-        <Brand />
-        <Outlet />
-      </div>
-      <LangPicker />
-    </Wrapper>
-  );
-};
+export const SignInLayout = withoutAuth(() => (
+  <Wrapper>
+    <div className="container">
+      <Brand />
+      <Outlet />
+    </div>
+    <LangPicker />
+  </Wrapper>
+));
 
 const Wrapper = styled.div`
   width: 100%;
