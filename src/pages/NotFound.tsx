@@ -2,7 +2,7 @@ import { Button, Result } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { routeNavigate } from 'routes';
 
-const NotFound = () => {
+export default function NotFound() {
   const navigate = useNavigate();
 
   return (
@@ -17,6 +17,4 @@ const NotFound = () => {
       }
     />
   );
-};
-
-export default NotFound;
+}

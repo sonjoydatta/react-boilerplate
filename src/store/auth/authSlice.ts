@@ -7,11 +7,13 @@ type AuthState = {
     name: string;
     email: string;
   } | null;
+  permissions: string[];
 };
 
 const initialState: AuthState = {
   isAuthenticated: false,
   user: null,
+  permissions: ['DASHBOARD', 'PROFILE'],
 };
 
 const authSlice = createSlice({

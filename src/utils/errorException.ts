@@ -24,7 +24,7 @@ export class ErrorException extends Error {
     /**
      * Find a string recursively in an object
      */
-    const getErrorStr = (obj: Record<string, unknown>): string => {
+    function getErrorStr(obj: Record<string, unknown>): string {
       const key = Object.keys(obj)[0];
       const value = obj[key];
       if (typeof value === 'string') {
@@ -47,7 +47,7 @@ export class ErrorException extends Error {
       }
 
       return 'Something went wrong!';
-    };
+    }
 
     if (typeof message === 'string') {
       this.message = message;

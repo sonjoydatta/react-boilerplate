@@ -1,7 +1,5 @@
 import { Containers } from 'containers';
 
-const SignIn = () => {
+export default function SignIn() {
   return <Containers.SignIn />;
-};
-
-export default SignIn;
+}

@@ -1,13 +1,14 @@
+import { Permission } from 'components/Permission';
 import { Link } from 'react-router-dom';
 import { routeNavigate } from 'routes';
 
-const Profile = () => {
+export default function Profile() {
   return (
-    <div>
-      <h1>Profile</h1>
-      <Link to={routeNavigate('dashboard')}>Go to Dashboard</Link>
-    </div>
+    <Permission to="PROFILE" isDefaultFallback>
+      <div>
+        <h1>Profile</h1>
+        <Link to={routeNavigate('dashboard')}>Go to Dashboard</Link>
+      </div>
+    </Permission>
   );
-};
-
-export default Profile;
+}
