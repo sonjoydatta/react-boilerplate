@@ -1,7 +1,7 @@
 import { Button, Result } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
-export const PermissionFallback = () => {
+export const AccessFallback = () => {
   const navigate = useNavigate();
 
   return (

@@ -1,8 +1,11 @@
 import { Button, Result } from 'antd';
 import { FC } from 'react';
-import { FallbackProps } from 'react-error-boundary';
 
-export const ErrorFallback: FC<FallbackProps> = ({ resetErrorBoundary }) => {
+type Props = {
+  resetErrorBoundary: () => void;
+};
+
+export const ErrorFallback: FC<Props> = ({ resetErrorBoundary }) => {
   return (
     <Result
       status="500"

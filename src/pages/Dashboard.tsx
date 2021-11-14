@@ -1,4 +1,4 @@
-import { Permission } from '@/components/permission';
+import { AccessBoundary } from '@/components/bounday';
 import { authAPI } from '@/libs/api';
 import { useMounted } from '@/libs/hooks';
 import { routeNavigate } from '@/routes';
@@ -23,11 +23,11 @@ export default function Dashboard() {
   console.log('testData', testData);
 
   return (
-    <Permission to="DASHBOARD" isDefaultFallback>
+    <AccessBoundary to="DASHBOARD" isDefaultFallback>
       <div>
         <h1>Dashboard</h1>
         <Link to={routeNavigate('dashboard/profile')}>Go to Profile</Link>
       </div>
-    </Permission>
+    </AccessBoundary>
   );
 }

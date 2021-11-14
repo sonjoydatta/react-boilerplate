@@ -6,7 +6,7 @@ import { Permission } from './types';
  * If the user has the permission, the function returns true.
  * Otherwise, it returns false.
  */
-export const usePermission = () => {
+export const useAccess = () => {
   const { permissions } = useStoreSelector((state) => state.auth);
 
   const isAllowedTo = (permission: Permission) => permissions.includes(permission);
