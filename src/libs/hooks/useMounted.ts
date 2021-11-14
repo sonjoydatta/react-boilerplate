@@ -5,24 +5,16 @@ import { useCallback, useEffect, useRef } from 'react';
  * the component is mounted. It is used to avoid calling
  * `setState` on an unmounted component.
  */
-export const useIsMounted = () => {
-  const isMountedRef = useRef(false);
+export const useMounted = () => {
+  const isMountedRef = useRef(true);
 
   useEffect(() => {
-    isMountedRef.current = true;
-
     return () => {
       isMountedRef.current = false;
     };
   }, []);
 
-  const isMounted = useCallback(() => {
-    if (!isMountedRef.current) {
-      throw new Error('useIsMounted is not mounted');
-    }
-
-    return isMountedRef.current;
-  }, []);
+  const isMounted = useCallback(() => isMountedRef.current, []);
 
   return isMounted;
 };

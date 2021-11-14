@@ -13,6 +13,10 @@ class AuthAPI extends HttpService {
   register(data: API.Auth.RegisterBody) {
     return this.post<API.Auth.Register>('/register', data);
   }
+
+  delayResponse(sec: number) {
+    return this.get<unknown>(`/users?delay=${sec}`);
+  }
 }
 
 export const authAPI = new AuthAPI(config.apiURL);
