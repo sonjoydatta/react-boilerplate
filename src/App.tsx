@@ -1,5 +1,5 @@
 import { GlobalStyle } from '@/assets/styles/styled';
-import { ErrorBoundary } from '@/components/boundaries';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { defaultTheme } from '@/config';
 import { BaseRoutes } from '@/routes';
 import { persistor, store } from '@/store';

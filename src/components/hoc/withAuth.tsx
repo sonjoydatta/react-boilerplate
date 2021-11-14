@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { AccessProvider } from '@/components/boundaries';
 import { useStoreSelector } from '@/store';
 import { ComponentType } from 'react';
+import { AccessProvider } from 'react-access-boundary';
 import { Navigate, useLocation } from 'react-router-dom';
 
 export const withAuth = <T extends object>(WrappedComponent: ComponentType<T>) => {

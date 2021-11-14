@@ -2474,6 +2474,11 @@ rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0:
     rc-resize-observer "^1.0.0"
     rc-util "^5.0.7"
 
+react-access-boundary@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-access-boundary/-/react-access-boundary-2.1.1.tgz#4cc6e9676b5cd26b26a221a1aa5123c1c60af764"
+  integrity sha512-fn78qKdNt0uoCZYxPR170O7Nn7sTpOHmjX9UKV+Q70xumUH/qNKpCW5XwC5TS23iq8tBvuw6onJ7cWAigRORwA==
+
 react-dom@^17.0.0:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"

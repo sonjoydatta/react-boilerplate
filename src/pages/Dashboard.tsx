@@ -1,8 +1,8 @@
-import { AccessBoundary } from '@/components/boundaries';
 import { authAPI } from '@/libs/api';
 import { useMounted } from '@/libs/hooks';
 import { routeNavigate } from '@/routes';
 import { useCallback, useEffect, useState } from 'react';
+import { AccessBoundary } from 'react-access-boundary';
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
@@ -23,7 +23,7 @@ export default function Dashboard() {
   console.log('testData', testData);
 
   return (
-    <AccessBoundary to="DASHBOARD" isDefaultFallback>
+    <AccessBoundary to="DASHBOARD_ppp" isDefaultFallback>
       <div>
         <h1>Dashboard</h1>
         <Link to={routeNavigate('dashboard/profile')}>Go to Profile</Link>

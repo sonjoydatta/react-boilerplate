@@ -1,5 +1,5 @@
-import { AccessBoundary } from '@/components/boundaries';
 import { routeNavigate } from '@/routes';
+import { AccessBoundary } from 'react-access-boundary';
 import { Link } from 'react-router-dom';
 
 export default function Profile() {
