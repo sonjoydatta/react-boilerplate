@@ -1,5 +1,5 @@
-import { Brand, LangPicker } from 'components/atoms';
-import { withoutAuth } from 'components/hoc';
+import { Brand, LangPicker } from '@/components/atoms';
+import { withoutAuth } from '@/components/hoc';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 

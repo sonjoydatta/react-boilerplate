@@ -1,9 +1,9 @@
-import { DashboardLayout, SignInLayout } from 'components/layouts';
-import { lazily } from 'libs/lazily';
+import { DashboardLayout, SignInLayout } from '@/components/layouts';
+import { lazily } from '@/libs/lazily';
 import { RouteObject, useRoutes } from 'react-router-dom';
 import { ConvertRoute, ParamsCount, ParamsString } from './types';
 
-const { SignIn, ForgotPassword, NotFound, Dashboard, DashboardProfile } = lazily(() => import('pages'));
+const { SignIn, ForgotPassword, NotFound, Dashboard, DashboardProfile } = lazily(() => import('@/pages'));
 
 const routes = [
   {

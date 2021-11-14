@@ -1,8 +1,8 @@
-import App from 'App';
-import 'assets/styles/less/app.less';
-import 'config/translate';
 import 'nprogress/nprogress.css';
 import ReactDOM from 'react-dom';
+import App from './App';
+import './assets/styles/less/app.less';
+import './config/translate';
 
 /**
  * `React.StrictMode` has been disabled

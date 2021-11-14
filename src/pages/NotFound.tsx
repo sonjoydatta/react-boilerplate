@@ -1,6 +1,6 @@
+import { routeNavigate } from '@/routes';
 import { Button, Result } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { routeNavigate } from 'routes';
 
 export default function NotFound() {
   const navigate = useNavigate();

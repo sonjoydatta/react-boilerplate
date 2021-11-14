@@ -1,5 +1,5 @@
+import { withAuth } from '@/components/hoc';
 import { Layout } from 'antd';
-import { withAuth } from 'components/hoc';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { LayoutHeader } from './LayoutHeader';

@@ -1,8 +1,8 @@
+import { useStoreSelector } from '@/store';
 import { Spin } from 'antd';
 import nProgress from 'nprogress';
 import { Suspense, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { useStoreSelector } from 'store';
 import { AppRoutes, routeNavigate } from './AppRoutes';
 
 export const BaseRoutes = () => {

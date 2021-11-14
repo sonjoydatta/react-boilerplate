@@ -1,5 +1,5 @@
+import config from '@/config';
 import { configureStore } from '@reduxjs/toolkit';
-import config from 'config';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AnyAction, Dispatch } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';

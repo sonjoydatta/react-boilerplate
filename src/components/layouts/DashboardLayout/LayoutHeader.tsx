@@ -1,5 +1,5 @@
+import { Brand } from '@/components/atoms';
 import { Col, Layout, Row } from 'antd';
-import { Brand } from 'components/atoms';
 import styled from 'styled-components';
 import { HeaderUserNav } from './HeaderUserNav';
 

@@ -1,4 +1,4 @@
-import { useStoreSelector } from 'store';
+import { useStoreSelector } from '@/store';
 import { Permission } from './types';
 
 /**

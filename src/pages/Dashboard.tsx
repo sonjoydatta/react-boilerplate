@@ -1,10 +1,10 @@
-import { Permission } from 'components/Permission';
+import { Permission } from '@/components/permission';
+import { routeNavigate } from '@/routes';
 import { Link } from 'react-router-dom';
-import { routeNavigate } from 'routes';
 
 export default function Dashboard() {
   return (
-    <Permission to="DASHBOARD_OVERVIEW" isDefaultFallback>
+    <Permission to="DASHBOARD" isDefaultFallback>
       <div>
         <h1>Dashboard</h1>
         <Link to={routeNavigate('dashboard/profile')}>Go to Profile</Link>

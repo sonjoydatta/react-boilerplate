@@ -1,6 +1,6 @@
+import { useStoreDispatch } from '@/store';
+import { app } from '@/store/actions';
 import { message } from 'antd';
-import { useStoreDispatch } from 'store';
-import { app } from 'store/actions';
 
 export const useMessage = (key: string) => {
   const dispatch = useStoreDispatch();

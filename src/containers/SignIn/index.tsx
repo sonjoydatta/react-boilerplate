@@ -1,11 +1,11 @@
+import { authAPI } from '@/libs/api';
+import { useMessage } from '@/libs/hooks';
+import { routeNavigate } from '@/routes';
+import { auth } from '@/store/actions';
+import { ErrorException } from '@/utils';
 import { Button, Form, Input, Typography } from 'antd';
-import { authAPI } from 'libs/api';
-import { useMessage } from 'libs/hooks';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { routeNavigate } from 'routes';
-import { auth } from 'store/actions';
-import { ErrorException } from 'utils';
 
 export const SignIn = () => {
   const { t } = useTranslation('signin');

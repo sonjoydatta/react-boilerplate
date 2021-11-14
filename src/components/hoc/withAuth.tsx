@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { PermissionProvider } from 'components/Permission';
+import { PermissionProvider } from '@/components/permission';
+import { useStoreSelector } from '@/store';
 import { ComponentType } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useStoreSelector } from 'store';
 
 export const withAuth = <T extends object>(WrappedComponent: ComponentType<T>) => {
   const hocComponent = (props: T) => {

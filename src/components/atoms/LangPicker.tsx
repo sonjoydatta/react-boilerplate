@@ -1,8 +1,8 @@
+import { useLang } from '@/libs/hooks';
+import { languageOption } from '@/utils/constants';
 import { Select } from 'antd';
-import { useLang } from 'libs/hooks';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { languageOption } from 'utils/constants';
 
 export const LangPicker = () => {
   const { t } = useTranslation();

@@ -1,5 +1,5 @@
-import config from 'config';
-import { HttpService } from 'services';
+import config from '@/config';
+import { HttpService } from '@/services';
 
 class AuthAPI extends HttpService {
   constructor(baseURL: string) {
