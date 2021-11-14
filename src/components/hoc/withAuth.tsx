@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { AccessProvider } from '@/components/bounday';
+import { AccessProvider } from '@/components/boundaries';
 import { useStoreSelector } from '@/store';
 import { ComponentType } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';

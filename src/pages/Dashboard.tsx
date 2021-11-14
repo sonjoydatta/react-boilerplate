@@ -1,4 +1,4 @@
-import { AccessBoundary } from '@/components/bounday';
+import { AccessBoundary } from '@/components/boundaries';
 import { authAPI } from '@/libs/api';
 import { useMounted } from '@/libs/hooks';
 import { routeNavigate } from '@/routes';

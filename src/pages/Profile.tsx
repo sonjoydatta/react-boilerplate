@@ -1,4 +1,4 @@
-import { AccessBoundary } from '@/components/bounday';
+import { AccessBoundary } from '@/components/boundaries';
 import { routeNavigate } from '@/routes';
 import { Link } from 'react-router-dom';
 
