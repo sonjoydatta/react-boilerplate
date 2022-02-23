@@ -1,5 +1,6 @@
 import { Containers } from '@/containers';
+import { FC } from 'react';
 
-export default function SignIn() {
-  return <Containers.SignIn />;
-}
+const SignIn: FC = () => <Containers.SignIn />;
+
+export default SignIn;

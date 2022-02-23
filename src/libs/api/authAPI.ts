@@ -1,22 +1,24 @@
 import config from '@/config';
 import { HttpService } from '@/services';
+import { RegisterParams, RegisterResponse, SignInParams, SignInResponse } from './@types';
 
-class AuthAPI extends HttpService {
-  constructor(baseURL: string) {
-    super(baseURL);
+class AuthAPI {
+  constructor(private http: HttpService) {}
+
+  signIn(data: SignInParams) {
+    return this.http.post<SignInResponse>('/login', data);
   }
 
-  signIn(data: API.Auth.SignInBody) {
-    return this.post<API.Auth.SignIn>('/login', data);
-  }
-
-  register(data: API.Auth.RegisterBody) {
-    return this.post<API.Auth.Register>('/register', data);
+  register(data: RegisterParams) {
+    return this.http.post<RegisterResponse>('/register', data);
   }
 
   delayResponse(sec: number) {
-    return this.get<unknown>(`/users?delay=${sec}`);
+    return this.http.get<unknown>(`/users?delay=${sec}`);
   }
 }
 
-export const authAPI = new AuthAPI(config.apiURL);
+const httpService = new HttpService(config.apiURL, {
+  debug: config.dev,
+});
+export const authAPI = new AuthAPI(httpService);

@@ -1,8 +1,9 @@
 import { routeNavigate } from '@/routes';
 import { Button, Result } from 'antd';
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function NotFound() {
+const NotFound: FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -17,4 +18,6 @@ export default function NotFound() {
       }
     />
   );
-}
+};
+
+export default NotFound;

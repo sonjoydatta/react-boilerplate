@@ -1,7 +1,9 @@
-export default function ForgotPassword() {
-  return (
-    <div>
-      <p>Forgot password</p>
-    </div>
-  );
-}
+import { FC } from 'react';
+
+const ForgotPassword: FC = () => (
+  <div>
+    <p>Forgot password</p>
+  </div>
+);
+
+export default ForgotPassword;

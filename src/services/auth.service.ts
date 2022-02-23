@@ -4,18 +4,20 @@ type AuthData = {
   token: string;
 };
 
-export class AuthService extends LocalStorageService {
-  getAuth(): AuthData {
-    return this.get('auth');
+export class AuthService {
+  constructor(private localStorageService: LocalStorageService) {}
+
+  getAuth(): AuthData | null {
+    return this.localStorageService.get('auth');
   }
 
   setAuth(data: AuthData) {
-    this.set('auth', data);
+    this.localStorageService.set('auth', data);
   }
 
   removeAuth() {
-    this.remove('auth');
+    this.localStorageService.remove('auth');
   }
 }
 
-export const authInstance = new AuthService();
+export const authInstance = new AuthService(new LocalStorageService());

@@ -20,7 +20,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<API.Auth.SignIn>) => {
+    setUser: (state, action: PayloadAction<API.SignInResponse>) => {
       const { token } = action.payload;
       if (token) {
         state.isAuthenticated = true;

@@ -1,10 +1,11 @@
 import { useLang } from '@/libs/hooks';
 import { languageOption } from '@/utils/constants';
 import { Select } from 'antd';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-export const LangPicker = () => {
+export const LangPicker: FC = () => {
   const { t } = useTranslation();
   const { language, handleChange } = useLang();
 

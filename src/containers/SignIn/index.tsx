@@ -4,6 +4,7 @@ import { routeNavigate } from '@/routes';
 import { auth } from '@/store/actions';
 import { ErrorException } from '@/utils';
 import { Button, Form, Input, Typography } from 'antd';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -11,20 +12,22 @@ export const SignIn = () => {
   const { t } = useTranslation('signin');
   const { APIRequest } = useMessage('signIn');
   const navigate = useNavigate();
-  const location = useLocation();
-  const { from } = location.state || { from: { pathname: routeNavigate('dashboard') } };
+  const { pathname = routeNavigate('dashboard') } = useLocation();
 
-  const handleSubmit = (values: API.Auth.SignInBody) => {
-    APIRequest(async () => {
-      const { success, data } = await authAPI.signIn(values);
-      if (success) {
-        auth.authenticate(data);
-        navigate(from);
-        return 'You have successfully signed in';
-      }
-      throw new ErrorException(data);
-    });
-  };
+  const handleSubmit = useCallback(
+    (values: API.SignInParams) => {
+      APIRequest(async () => {
+        const { success, data } = await authAPI.signIn(values);
+        if (success) {
+          auth.authenticate(data);
+          navigate(pathname);
+          return 'You have successfully signed in';
+        }
+        throw new ErrorException(data);
+      });
+    },
+    [APIRequest, navigate, pathname],
+  );
 
   return (
     <Form

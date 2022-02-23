@@ -1,9 +1,10 @@
 import { Brand, LangPicker } from '@/components/atoms';
 import { withoutAuth } from '@/components/hoc';
+import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const SignInLayout = withoutAuth(() => (
+export const SignInLayout: FC = withoutAuth(() => (
   <Wrapper>
     <div className="container">
       <Brand />

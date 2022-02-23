@@ -1,11 +1,12 @@
 import { withAuth } from '@/components/hoc';
 import { Layout } from 'antd';
+import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { LayoutHeader } from './LayoutHeader';
 import { LayoutSider } from './LayoutSider';
 
-export const DashboardLayout = withAuth(() => (
+export const DashboardLayout: FC = withAuth(() => (
   <Layout>
     <LayoutHeader />
     <Layout>

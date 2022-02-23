@@ -1,7 +1,7 @@
 import { useStoreDispatch, useStoreSelector } from '@/store';
 import { app } from '@/store/actions';
 import { languageOption } from '@/utils/constants';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const useLang = () => {
@@ -13,10 +13,13 @@ export const useLang = () => {
     i18n.changeLanguage(language);
   }, [i18n, language]);
 
-  const handleChange = (value: keyof typeof languageOption) => {
-    i18n.changeLanguage(value);
-    dispatch(app.updateLanguage(value));
-  };
+  const handleChange = useCallback(
+    (value: keyof typeof languageOption) => {
+      i18n.changeLanguage(value);
+      dispatch(app.updateLanguage(value));
+    },
+    [dispatch, i18n],
+  );
 
   return {
     language,
