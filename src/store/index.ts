@@ -17,11 +17,11 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const middlewares: any[] = [];
-if (config.dev) {
-  await import('redux-logger').then(({ logger }) => {
-    middlewares.push(logger);
-  });
-}
+// if (config.dev) {
+//   await import('redux-logger').then(({ logger }) => {
+//     middlewares.push(logger);
+//   });
+// }
 
 const store = configureStore({
   reducer: persistedReducer,

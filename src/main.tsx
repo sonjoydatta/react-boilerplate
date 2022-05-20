@@ -1,5 +1,5 @@
 import 'nprogress/nprogress.css';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import './assets/styles/less/app.less';
 import './config/translate';
@@ -8,4 +8,6 @@ import './config/translate';
  * `React.StrictMode` has been disabled
  * Some features of `Ant design` will not work with the StrictMode
  */
-ReactDOM.render(<App />, document.getElementById('root'));
+const element = document.getElementById('root');
+const root = createRoot(element as HTMLElement);
+root.render(<App />);
