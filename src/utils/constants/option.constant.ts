@@ -1,4 +1,4 @@
 export const languageOption = {
-  en: 'English',
-  sv: 'Swedish',
+	en: 'English',
+	sv: 'Swedish',
 };

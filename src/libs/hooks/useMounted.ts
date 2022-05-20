@@ -6,16 +6,16 @@ import { useCallback, useEffect, useRef } from 'react';
  * `setState` on an unmounted component.
  */
 export const useMounted = () => {
-  const isMountedRef = useRef(true);
+	const isMountedRef = useRef(true);
 
-  useEffect(
-    () => () => {
-      isMountedRef.current = false;
-    },
-    [],
-  );
+	useEffect(
+		() => () => {
+			isMountedRef.current = false;
+		},
+		[]
+	);
 
-  const isMounted = useCallback(() => isMountedRef.current, []);
+	const isMounted = useCallback(() => isMountedRef.current, []);
 
-  return isMounted;
+	return isMounted;
 };

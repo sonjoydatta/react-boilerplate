@@ -4,19 +4,19 @@ import { initReactI18next } from 'react-i18next';
 import config from '..';
 
 i18n
-  .use(Backend)
-  .use(initReactI18next)
-  .init({
-    lng: config.lang,
-    fallbackLng: 'en',
-    // debug: config.dev,
-    interpolation: {
-      escapeValue: false,
-    },
-    ns: ['general', 'signin'],
-    backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
-    },
-  });
+	.use(Backend)
+	.use(initReactI18next)
+	.init({
+		lng: config.lang,
+		fallbackLng: 'en',
+		// debug: config.dev,
+		interpolation: {
+			escapeValue: false,
+		},
+		ns: ['general', 'signin'],
+		backend: {
+			loadPath: '/locales/{{lng}}/{{ns}}.json',
+		},
+	});
 
 export default i18n;

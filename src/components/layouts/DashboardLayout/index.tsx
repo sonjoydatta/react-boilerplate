@@ -7,21 +7,21 @@ import { LayoutHeader } from './LayoutHeader';
 import { LayoutSider } from './LayoutSider';
 
 export const DashboardLayout: FC = withAuth(() => (
-  <Layout>
-    <LayoutHeader />
-    <Layout>
-      <LayoutSider />
-      <Layout style={{ padding: '0 1.5rem 1.5rem' }}>
-        <LayoutContent>
-          <Outlet />
-        </LayoutContent>
-      </Layout>
-    </Layout>
-  </Layout>
+	<Layout>
+		<LayoutHeader />
+		<Layout>
+			<LayoutSider />
+			<Layout style={{ padding: '0 1.5rem 1.5rem' }}>
+				<LayoutContent>
+					<Outlet />
+				</LayoutContent>
+			</Layout>
+		</Layout>
+	</Layout>
 ));
 
 const LayoutContent = styled(Layout.Content)`
-  min-height: calc(100vh - 5.5rem);
-  padding: 1.5rem 0;
-  background-color: ${({ theme }) => theme.colors.gray[200]};
+	min-height: calc(100vh - 5.5rem);
+	padding: 1.5rem 0;
+	background-color: ${({ theme }) => theme.colors.gray[200]};
 `;

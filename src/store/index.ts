@@ -7,10 +7,10 @@ import storage from 'redux-persist/lib/storage';
 import reducer from './rootReducers';
 
 const persistConfig = {
-  key: 'root',
-  version: 1,
-  storage,
-  // whitelist: ['app'],
+	key: 'root',
+	version: 1,
+	storage,
+	// whitelist: ['app'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
@@ -24,12 +24,12 @@ const middlewares: any[] = [];
 // }
 
 const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(middlewares),
-  devTools: config.dev,
+	reducer: persistedReducer,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: false,
+		}).concat(middlewares),
+	devTools: config.dev,
 });
 
 const persistor = persistStore(store);
