@@ -14,6 +14,8 @@ It's developed with some specific development philosophy but, you're free to arc
 6. Configured with `React Router V6` which has the more optimised features than previous version
 7. Has access control features
 8. It has the fallback UI for internal server error & unauthorised
+9. Decouple the UI from the business logic and API calls (make it as a pure library)
+10. Added `React Query` for fetching data from the server
 
 ## Quick start
 
