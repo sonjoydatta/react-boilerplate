@@ -1,6 +1,6 @@
 import config from '@/config';
-import { HttpService } from '@/services';
 import { RegisterParams, RegisterResponse, SignInParams, SignInResponse } from './@types';
+import { HttpService } from './httpService';
 
 class AuthAPI {
 	constructor(private http: HttpService) {}
@@ -18,7 +18,5 @@ class AuthAPI {
 	}
 }
 
-const httpService = new HttpService(config.apiURL, {
-	debug: config.dev,
-});
+const httpService = new HttpService(config.apiURL);
 export const authAPI = new AuthAPI(httpService);

@@ -2,17 +2,12 @@ import { lazy } from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
 import { ConvertRoute, ParamsCount, ParamsString } from './types';
 
-const SignInLayout = lazy(() =>
-	import('@/components/layouts/SignInLayout').then((module) => ({ default: module.SignInLayout }))
-);
+const SignInLayout = lazy(() => import('@/components/layouts/SignInLayout'));
 const SignIn = lazy(() => import('@/pages/SignIn'));
 const ForgotPassword = lazy(() => import('@/pages/ForgotPassword'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
-const DashboardLayout = lazy(() =>
-	import('@/components/layouts/DashboardLayout').then((module) => ({
-		default: module.DashboardLayout,
-	}))
-);
+
+const DashboardLayout = lazy(() => import('@/components/layouts/DashboardLayout'));
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const DashboardProfile = lazy(() => import('@/pages/Profile'));
 

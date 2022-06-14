@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const SignInLayout: FC = withoutAuth(() => (
+const SignInLayout: FC = withoutAuth(() => (
 	<Wrapper>
 		<div className='container'>
 			<Brand />
@@ -13,6 +13,8 @@ export const SignInLayout: FC = withoutAuth(() => (
 		<LangPicker />
 	</Wrapper>
 ));
+
+export default SignInLayout;
 
 const Wrapper = styled.div`
 	width: 100%;

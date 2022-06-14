@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": {
     "name": "Sonjoy Datta",
     "email": "sonjoy.dat@gmail.com",
@@ -28,6 +28,7 @@
     "react-access-boundary": "^2.1.4",
     "react-dom": "^18.1.0",
     "react-i18next": "^11.16.9",
+    "react-query": "^3.39.1",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0",

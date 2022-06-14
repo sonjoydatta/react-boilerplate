@@ -11,6 +11,7 @@ const persistConfig = {
 	version: 1,
 	storage,
 	// whitelist: ['app'],
+	blacklist: ['app', 'auth'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

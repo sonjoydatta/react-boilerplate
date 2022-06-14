@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { LayoutHeader } from './LayoutHeader';
 import { LayoutSider } from './LayoutSider';
 
-export const DashboardLayout: FC = withAuth(() => (
+const DashboardLayout: FC = withAuth(() => (
 	<Layout>
 		<LayoutHeader />
 		<Layout>
@@ -19,6 +19,8 @@ export const DashboardLayout: FC = withAuth(() => (
 		</Layout>
 	</Layout>
 ));
+
+export default DashboardLayout;
 
 const LayoutContent = styled(Layout.Content)`
 	min-height: calc(100vh - 5.5rem);
