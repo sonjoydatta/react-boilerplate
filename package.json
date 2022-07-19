@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
   "private": true,
-  "version": "1.3.0",
+  "version": "1.4.0",
   "author": {
     "name": "Sonjoy Datta",
     "email": "sonjoy.dat@gmail.com",
@@ -33,7 +33,8 @@
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "vite-plugin-svgr": "^2.2.0"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0",

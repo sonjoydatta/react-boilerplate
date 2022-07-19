@@ -1,4 +1,5 @@
 {
+  "Choose Language": "Elige lengua",
   "Sign in to continue": "Logga in för att fortsätta",
   "Email": "E-post",
   "Email address is required!": "E-postadress krävs!",
@@ -8,5 +9,8 @@
   "Password": "Lösenord",
   "Password is required!": "Lösenord krävs!",
   "You have successfully signed in!": "Has iniciado sesión correctamente!",
-  "Email or password is invalid!": "El correo electrónico o la contraseña no son válidos!"
+  "Email or password is invalid!": "El correo electrónico o la contraseña no son válidos!",
+  "Dashboard": "Tablero",
+  "Settings": "Ajustes",
+  "Profile": "Perfil"
 }

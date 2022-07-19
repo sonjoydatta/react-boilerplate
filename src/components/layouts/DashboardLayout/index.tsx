@@ -1,29 +1,47 @@
 import { withAuth } from '@/components/hoc';
 import { Layout } from 'antd';
-import { FC } from 'react';
+import { FC, useCallback, useRef, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
 import { LayoutHeader } from './LayoutHeader';
 import { LayoutSider } from './LayoutSider';
 
-const DashboardLayout: FC = withAuth(() => (
-	<Layout>
-		<LayoutHeader />
-		<Layout>
-			<LayoutSider />
-			<Layout style={{ padding: '0 1.5rem 1.5rem' }}>
-				<LayoutContent>
+const DashboardLayout: FC = withAuth(() => {
+	const [isCollapsed, setCollapsed] = useState(false);
+	const isCollapsedClone = useRef(isCollapsed);
+
+	const handleToggleCollapsed = () => {
+		setCollapsed((prev) => !prev);
+	};
+
+	const handleMouseEnter = useCallback(() => {
+		isCollapsedClone.current = isCollapsed;
+
+		if (isCollapsed) {
+			setCollapsed(false);
+		}
+	}, [isCollapsed]);
+
+	const handleMouseLeave = useCallback(() => {
+		if (isCollapsedClone.current) {
+			setCollapsed(true);
+		}
+	}, []);
+
+	return (
+		<Layout hasSider>
+			<LayoutSider
+				collapsed={isCollapsed}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
+			/>
+			<Layout style={{ height: '100vh' }}>
+				<LayoutHeader collapsed={isCollapsed} onToggle={handleToggleCollapsed} />
+				<Layout.Content style={{ padding: '1.5rem', overflowX: 'hidden' }}>
 					<Outlet />
-				</LayoutContent>
+				</Layout.Content>
 			</Layout>
 		</Layout>
-	</Layout>
-));
+	);
+});
 
 export default DashboardLayout;
-
-const LayoutContent = styled(Layout.Content)`
-	min-height: calc(100vh - 5.5rem);
-	padding: 1.5rem 0;
-	background-color: ${({ theme }) => theme.colors.gray[200]};
-`;

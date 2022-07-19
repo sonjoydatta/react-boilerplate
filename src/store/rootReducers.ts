@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import appSlice from './app/appSlice';
-import authSlice from './auth/authSlice';
+import appSlice from './appSlice';
+import authSlice from './authSlice';
 
 export default combineReducers({
 	app: appSlice.reducer,

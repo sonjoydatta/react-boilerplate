@@ -1,4 +1,4 @@
-import { routeNavigate } from '@/routes';
+import { PRIVATE_ROUTES } from '@/routes/paths';
 import { Button, Result } from 'antd';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ const NotFound: FC = () => {
 			title='404'
 			subTitle='Sorry, the page you visited does not exist.'
 			extra={
-				<Button type='primary' onClick={() => navigate(routeNavigate('dashboard'))}>
+				<Button type='primary' onClick={() => navigate(PRIVATE_ROUTES.DASHBOARD)}>
 					Back Home
 				</Button>
 			}

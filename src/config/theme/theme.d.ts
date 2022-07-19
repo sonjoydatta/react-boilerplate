@@ -4,6 +4,7 @@ type ColorGray = 100 | 200 | 300 | 400;
 type Colors = {
 	primary: string;
 	white: string;
+	text: string;
 	gray: Record<ColorGray, string>;
 };
 

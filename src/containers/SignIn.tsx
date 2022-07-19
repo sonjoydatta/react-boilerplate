@@ -1,15 +1,15 @@
 import { authAPI } from '@/libs/api';
 import { authService } from '@/libs/auth';
-import { routeNavigate } from '@/routes';
+import { PRIVATE_ROUTES } from '@/routes/paths';
 import { Button, Form, Input, message, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
-	const { t } = useTranslation('signin');
+	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const { pathname = routeNavigate('dashboard') } = useLocation();
+	const { pathname = PRIVATE_ROUTES.DASHBOARD } = useLocation();
 
 	const { mutate: handleSubmit, isLoading } = useMutation(
 		(values: API.SignInParams) => authAPI.signIn(values),

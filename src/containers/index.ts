@@ -1,5 +1,1 @@
-import { SignIn } from './SignIn';
-
-export const Containers = {
-	SignIn,
-};
+export { SignIn as SignInContainer } from './SignIn';

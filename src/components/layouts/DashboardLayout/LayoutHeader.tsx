@@ -1,24 +1,34 @@
-import { Brand } from '@/components/atoms';
-import { Col, Layout, Row } from 'antd';
-import { FC } from 'react';
-import styled from 'styled-components';
+import { LangPicker } from '@/components/atoms';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Col, Row } from 'antd';
+import { createElement, FC } from 'react';
 import { HeaderUserNav } from './HeaderUserNav';
+import { LayoutHeaderWrapper } from './styles';
 
-export const LayoutHeader: FC = () => (
-	<Header>
+type LayoutHeaderProps = {
+	collapsed?: boolean;
+	onToggle?: () => void;
+};
+
+export const LayoutHeader: FC<LayoutHeaderProps> = ({ collapsed, onToggle }) => (
+	<LayoutHeaderWrapper className='shadow'>
 		<Row align='middle' justify='space-between'>
 			<Col>
-				<Brand width='auto' height='64px' />
+				{createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+					className: 'trigger',
+					onClick: onToggle,
+				})}
 			</Col>
 			<Col>
-				<HeaderUserNav />
+				<Row gutter={16}>
+					<Col>
+						<LangPicker />
+					</Col>
+					<Col>
+						<HeaderUserNav />
+					</Col>
+				</Row>
 			</Col>
 		</Row>
-	</Header>
+	</LayoutHeaderWrapper>
 );
-
-const Header = styled(Layout.Header)`
-	line-height: 0;
-	border-bottom: ${({ theme }) => `1px solid ${theme.colors.gray[200]}`};
-	background-color: ${({ theme }) => theme.colors.white};
-`;

@@ -1,13 +1,13 @@
-import general from 'public/locales/en/general.json';
-import signin from 'public/locales/en/signin.json';
+import translation from 'public/locales/en/translation.json';
 import 'react-i18next';
+
+export type translation = typeof translation;
+export type translationKeys = keyof translation;
 
 declare module 'react-i18next' {
 	interface CustomTypeOptions {
-		defaultNS: 'general';
 		resources: {
-			general: typeof general;
-			signin: typeof signin;
+			translation: typeof translation;
 		};
 	}
 }

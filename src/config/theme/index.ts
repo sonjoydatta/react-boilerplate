@@ -5,6 +5,7 @@ export const defaultTheme: DefaultTheme = {
 	colors: {
 		primary: '#4599ff',
 		white: '#ffffff',
+		text: '#6D7986',
 		gray: {
 			100: '#f7fafc',
 			200: '#edf2f7',

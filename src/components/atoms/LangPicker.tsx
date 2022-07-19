@@ -1,6 +1,6 @@
 import { useLang } from '@/libs/hooks';
 import { languageOption } from '@/utils/constants';
-import { Select } from 'antd';
+import { Select, Typography } from 'antd';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -10,9 +10,9 @@ export const LangPicker: FC = () => {
 	const { language, handleChange } = useLang();
 
 	return (
-		<Wrapper>
-			<span>{t('Choose Language')}</span>
-			<Select defaultValue={language} style={{ width: 120 }} onChange={handleChange}>
+		<Wrapper className='lang-picker'>
+			<Typography.Text>{t('Choose Language')}</Typography.Text>
+			<Select defaultValue={language} style={{ width: 110 }} onChange={handleChange}>
 				{languageOption &&
 					Object.entries(languageOption).map(([key, value]) => (
 						<Select.Option key={key} value={key}>
@@ -27,7 +27,7 @@ export const LangPicker: FC = () => {
 const Wrapper = styled.div`
 	margin-top: 1rem;
 
-	span {
+	& > .ant-typography {
 		padding-right: 0.625rem;
 	}
 `;

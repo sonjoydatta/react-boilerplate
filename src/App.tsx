@@ -10,9 +10,16 @@ import { defaultTheme } from './config';
 import { BaseRoutes } from './routes';
 import { persistor, store } from './store';
 
-const App = () => {
-	const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+			retry: false,
+		},
+	},
+});
 
+const App = () => {
 	return (
 		<Provider store={store}>
 			<Suspense fallback={<Spin className='SuspenseLoader' size='large' />}>
