@@ -9,9 +9,9 @@ It's developed with some specific development philosophy but, you're free to arc
 3. Configured with `Ant Design`
 4. Less, Scss, CSS & styled-components can be used if needed
 5. It has the translation & styled-components default theme with typed configuration
-6. Configured with `React Router V6` which has the more optimised features than the previous version
+6. Configured with `React Router V6` which has more optimised features than the previous version
 7. Has access control features
-8. It has the fallback UI for internal server error & unauthorised
+8. It has a fallback UI for internal server errors & unauthorised
 9. Decouple the UI from the business logic and API calls (make it a pure library)
 10. Added `React Query` for fetching data from the server
 
