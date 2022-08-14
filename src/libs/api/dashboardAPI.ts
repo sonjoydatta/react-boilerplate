@@ -6,7 +6,7 @@ class DashboardAPI {
 	constructor(private http: HttpAuthService) {}
 
 	getDashboard() {
-		return this.http.get<any>('dashboard');
+		return this.http.get<unknown>('dashboard');
 	}
 }
 
