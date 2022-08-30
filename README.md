@@ -1,11 +1,9 @@
 # React Dashboard Boilerplate
-
 This is a professional Front-end boilerplate for building fast, robust, and adaptable web applications.
 
 It's developed with some specific development philosophy but, you're free to architect your code in the way that you want.
 
 ## Features
-
 1. Boilerplate fully typed with `TypeScript`
 2. Configured with `Vite`. Vite pre-bundles dependencies using esbuild. Esbuild is written in Go and pre-bundles dependencies 10-100x faster than other JavaScript-based bundlers. [Learn more about vite](https://dev.to/karanpratapsingh/vite-is-too-fast-i8g)
 3. Configured with `Ant Design`
@@ -18,7 +16,6 @@ It's developed with some specific development philosophy but, you're free to arc
 10. Added `React Query` for fetching data from the server
 
 ## Quick start
-
 1. You'll need to have Node >= 14.18.1 and npm >= 6.14.15 on your machine.
 2. Clone this repo using `git clone --depth=1 https://github.com/sonjoydatta/react-boilerplate.git <YOUR_PROJECT_NAME>`
 3. Enter to the project directory: `cd <YOUR_PROJECT_NAME>`
@@ -29,7 +26,6 @@ It's developed with some specific development philosophy but, you're free to arc
 Now you are ready to buzz!
 
 ## .env example
-
 `.env`
 
 ```
@@ -42,6 +38,25 @@ VITE_BACKEND_API_URL=https://reqres.in/api
 VITE_BACKEND_API_URL=https://example.com/api
 ```
 
-## License
+## Common Commands
+| Command        | Description |
+| ------------- | ------------- |
+| yarn dev          | Run the app in development mode |
+| yarn build   | Build the app for production |
+| yarn start   | Start the app in production mode |
+| yarn lint   | Run ESLint |
+| yarn format   | Run Prettier |
 
+## Acknowledgments
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Query](https://react-query.tanstack.com/)
+- [Ant Design](https://ant.design/)
+- [Styled Components](https://styled-components.com/)
+- [React Router](https://react-router.js.org/)
+- [i18next](https://www.i18next.com/)
+
+## License
 The code is available under the [MIT license](LICENSE.md).
