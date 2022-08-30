@@ -15,6 +15,15 @@ It's developed with some specific development philosophy but, you're free to arc
 9. Decouple the UI from the business logic and API calls (make it as a pure library)
 10. Added `React Query` for fetching data from the server
 
+## Common Commands
+| Command        | Description |
+| ------------- | ------------- |
+| yarn dev          | Run the app in development mode |
+| yarn build   | Build the app for production |
+| yarn start   | Start the app in production mode |
+| yarn lint   | Run ESLint |
+| yarn format   | Run Prettier |
+
 ## Quick start
 1. You'll need to have Node >= 14.18.1 and npm >= 6.14.15 on your machine.
 2. Clone this repo using `git clone --depth=1 https://github.com/sonjoydatta/react-boilerplate.git <YOUR_PROJECT_NAME>`
@@ -38,15 +47,6 @@ VITE_BACKEND_API_URL=https://reqres.in/api
 VITE_BACKEND_API_URL=https://example.com/api
 ```
 
-## Common Commands
-| Command        | Description |
-| ------------- | ------------- |
-| yarn dev          | Run the app in development mode |
-| yarn build   | Build the app for production |
-| yarn start   | Start the app in production mode |
-| yarn lint   | Run ESLint |
-| yarn format   | Run Prettier |
-
 ## Acknowledgments
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
@@ -55,7 +55,7 @@ VITE_BACKEND_API_URL=https://example.com/api
 - [React Query](https://react-query.tanstack.com/)
 - [Ant Design](https://ant.design/)
 - [Styled Components](https://styled-components.com/)
-- [React Router](https://react-router.js.org/)
+- [React Router V6](https://reactrouter.com/)
 - [i18next](https://www.i18next.com/)
 
 ## License
