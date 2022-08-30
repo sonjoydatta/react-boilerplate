@@ -1,10 +1,5 @@
-import {
-	HttpResponse,
-	HttpServiceConfig,
-	RefreshTokenResponse,
-	RequestBody,
-	RequestOptions,
-} from './types';
+import { ErrorException } from '@/utils';
+import { HttpServiceConfig, RefreshTokenResponse, RequestBody, RequestOptions } from './types';
 
 export class HttpService {
 	constructor(private baseURL: string, private config: HttpServiceConfig = {}) {}
@@ -70,7 +65,7 @@ export class HttpService {
 		url: string,
 		body: RequestBody,
 		options?: RequestOptions
-	): Promise<HttpResponse<T>> {
+	): Promise<T> {
 		const requestURL = `${this.baseURL}/${url}`;
 
 		// Request headers
@@ -81,7 +76,7 @@ export class HttpService {
 		};
 
 		if (token) {
-			headers.Authorization = `Bearer ${token}`;
+			headers.Authorization = `Token ${token}`;
 		}
 
 		if (body instanceof FormData) {
@@ -97,8 +92,11 @@ export class HttpService {
 			});
 
 			if (response.ok) {
-				const data = await response.json();
-				return { data, success: true };
+				try {
+					return await response.json();
+				} catch (error) {
+					return {} as T;
+				}
 			}
 
 			// Unauthorised
@@ -112,16 +110,14 @@ export class HttpService {
 				this.config.onUnauthorised?.();
 			}
 
-			const error = await response.json().catch(() => ({
-				msg: 'Something went wrong',
-			}));
-
-			throw new Error(error.msg);
+			const error = await response.json();
+			throw new ErrorException(error || 'Something went wrong');
 		} catch (error) {
-			return {
-				message: error instanceof Error ? error.message : 'Something went wrong',
-				success: false,
-			};
+			if (error instanceof Error) {
+				throw new Error(error?.message || 'Something went wrong');
+			}
+
+			throw new Error('Something went wrong');
 		}
 	}
 }

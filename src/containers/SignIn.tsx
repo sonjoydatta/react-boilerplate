@@ -1,9 +1,9 @@
 import { authAPI } from '@/libs/api';
 import { authService } from '@/libs/auth';
 import { PRIVATE_ROUTES } from '@/routes/paths';
+import { useMutation } from '@tanstack/react-query';
 import { Button, Form, Input, message, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { useMutation } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
@@ -14,11 +14,7 @@ export const SignIn = () => {
 	const { mutate: handleSubmit, isLoading } = useMutation(
 		(values: API.SignInParams) => authAPI.signIn(values),
 		{
-			onSuccess: ({ success, data }) => {
-				if (!success) {
-					throw new Error(t('Email or password is invalid!'));
-				}
-
+			onSuccess: (data) => {
 				navigate(pathname);
 				authService.setToken(data.token);
 				message.success(t('You have successfully signed in!'));
