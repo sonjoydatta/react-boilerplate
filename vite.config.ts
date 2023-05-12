@@ -8,15 +8,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ['antd', 'lodash'],
   },
-  css: {
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-      },
-    },
-  },
-  // build: {
-  //   sourcemap: true,
-  // },
   plugins: [react(), tsconfigPaths(), svgr()],
 })

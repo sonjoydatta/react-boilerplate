@@ -1,5 +1,5 @@
-import { Spin } from '@/components/atoms';
 import { useStoreSelector } from '@/store';
+import { Spin } from 'antd';
 import nProgress from 'nprogress';
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -32,7 +32,7 @@ export const BaseRoutes = () => {
 							path={path}
 							index={path === PUBLIC_ROUTES.SIGNIN}
 							element={
-								<Suspense fallback={<Spin type='content-centre' size='large' />}>
+								<Suspense fallback={<Spin size='large' />}>
 									<Component />
 								</Suspense>
 							}
@@ -46,7 +46,7 @@ export const BaseRoutes = () => {
 							path={path}
 							index={path === PRIVATE_ROUTES.DASHBOARD}
 							element={
-								<Suspense fallback={<Spin type='content-centre' size='large' />}>
+								<Suspense fallback={<Spin size='large' />}>
 									<Component />
 								</Suspense>
 							}

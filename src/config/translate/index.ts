@@ -7,6 +7,7 @@ i18n
 	.use(Backend)
 	.use(initReactI18next)
 	.init({
+		returnNull: false,
 		lng: config.lang,
 		fallbackLng: 'en',
 		debug: false,
